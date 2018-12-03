@@ -73,11 +73,11 @@ public class Ground : MonoBehaviour {
         // construct 3D geometry (by connecting groups of 3 points into triangles).
         m.vertices = new[] {
             new Vector3(-0.5f, 0.0f, -0.5f), // Bottom
-            new Vector3(-0.5f, 0.0f, 9.5f),
-            new Vector3(9.5f, 0.0f, 9.5f),
+            new Vector3(-0.5f, 0.0f,  4.5f),
+            new Vector3( 4.5f, 0.0f,  4.5f),
             new Vector3(-0.5f, 0.0f, -0.5f),
-            new Vector3(9.5f, 0.0f, 9.5f),
-            new Vector3(9.5f, 0.0f, -0.5f)
+            new Vector3( 4.5f, 0.0f,  4.5f),
+            new Vector3( 4.5f, 0.0f, -0.5f)
         };
 
         // Define the vertex colours

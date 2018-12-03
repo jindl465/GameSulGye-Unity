@@ -186,8 +186,8 @@ public class Group : MonoBehaviour {
                 //If not valid, reverse the process.
                 transform.position += new Vector3(0, 1, 0);
 
-                //Clear filled horizontal lines
-                Grid.deleteFullPlane();
+                //Chekc filled plane
+                Grid.checkFullPlane();
 
                 //Spawn next Group
                 FindObjectOfType<Spawner>().NextSpawner();
@@ -218,8 +218,8 @@ public class Group : MonoBehaviour {
                 // It's not valid. revert.
                 transform.position += new Vector3(0, fallSpeed, 0);
 
-                // Clear filled horizontal lines
-                Grid.deleteFullPlane();
+                //Chekc filled plane
+                Grid.checkFullPlane();
 
                 // Spawn next Group
                 FindObjectOfType<Spawner>().NextSpawner();
@@ -239,6 +239,7 @@ public class Group : MonoBehaviour {
         {
             Grid.lastGameScore = Grid.gameScore;
             Grid.gameScore = 0;
+            System.Array.Clear(Grid.isFilled, 0, Grid.h);
             SceneManager.LoadScene(2);
             Destroy(gameObject);
         }        

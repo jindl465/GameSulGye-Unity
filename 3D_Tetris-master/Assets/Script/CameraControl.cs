@@ -13,8 +13,8 @@ public class CameraControl : MonoBehaviour
     {
         originPosition = transform.position;
         originQuaternion = transform.rotation;
-        transform.Rotate(-30, 0, -90);
-        transform.position += new Vector3(0, -10, 0);
+        //transform.Rotate(-30, 0, -90);
+        //transform.position += new Vector3(0, -10, 0);
     }
     void Update()
     {
