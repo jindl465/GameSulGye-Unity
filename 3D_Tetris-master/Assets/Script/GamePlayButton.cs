@@ -15,6 +15,7 @@ public class GamePlayButton : MonoBehaviour
     public Texture play;
     public Texture origin;
     public Canvas pauseScene;
+    public Canvas clearScene;
     public AudioSource bg_music;
     public static bool musicMute = true;
     private Texture musicButton;
@@ -35,6 +36,7 @@ public class GamePlayButton : MonoBehaviour
         }
 
         pauseScene.enabled = false;
+        clearScene.enabled = false;
     }
 
     void OnGUI()
@@ -50,6 +52,7 @@ public class GamePlayButton : MonoBehaviour
         if (GUI.Button(new Rect((Screen.width - 190), (Screen.height * 0.02f), 70, 60), "Restart", skin.button)) 
         {
             Grid.gameScore = 0;
+            Group.numberOfBlocksLeft = Group.stage;
             isPaused = false;
             Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -85,6 +88,16 @@ public class GamePlayButton : MonoBehaviour
         }
 
         //Game Score display
-        GUI.Box(new Rect(100, (Screen.height * 0.02f), 100, 100), "Total Score: \n" + Grid.gameScore.ToString(),skin.box);
+        GUI.Box(new Rect((Screen.width * 0.02f), (Screen.height * 0.02f), 100, 100), "Stage " + Group.stage.ToString(), skin.box);
+        GUI.Box(new Rect((Screen.width * 0.02f), (Screen.height * 0.02f) + 40, 100, 200), "Total Score: " + Grid.gameScore.ToString(), skin.box);
+        GUI.Box(new Rect((Screen.width * 0.02f), (Screen.height * 0.02f) + 80, 100, 200), "Blocks Left: " + Group.numberOfBlocksLeft.ToString(), skin.box);
+
+        //Complete the stage
+        if (Group.numberOfBlocksLeft <= 0)
+        {
+            Time.timeScale = 0;
+            Grid.lastGameScore = Grid.gameScore;
+            clearScene.enabled = true;
+        }
     }
 }

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Group : MonoBehaviour {
 
     public static int gameDifficulty = 1;
+    public static int stage = 0;
+    public static int numberOfBlocksLeft = 0;
     public int flag_F = 0;
     // Time since last gravity tick
     float lastFall = 0;
@@ -230,11 +232,16 @@ public class Group : MonoBehaviour {
                 //If not valid, reverse the process.
                 transform.position += new Vector3(0, 1, 0);
 
-                //Chekc filled plane
-                Grid.checkFullPlane();
+                numberOfBlocksLeft--;
 
-                //Spawn next Group
-                FindObjectOfType<Spawner>().NextSpawner();
+                if (numberOfBlocksLeft > 0)
+                {
+                    //Check filled plane
+                    Grid.checkFullPlane();
+
+                    // Spawn next Group
+                    FindObjectOfType<Spawner>().NextSpawner();
+                }
 
                 //Disable script
                 enabled = false;
@@ -262,11 +269,16 @@ public class Group : MonoBehaviour {
                 // It's not valid. revert.
                 transform.position += new Vector3(0, fallSpeed, 0);
 
-                //Chekc filled plane
-                Grid.checkFullPlane();
+                numberOfBlocksLeft--;
 
-                // Spawn next Group
-                FindObjectOfType<Spawner>().NextSpawner();
+                if (numberOfBlocksLeft > 0)
+                {
+                    //Check filled plane
+                    Grid.checkFullPlane();
+
+                    // Spawn next Group
+                    FindObjectOfType<Spawner>().NextSpawner();
+                }
 
                 // Disable script
                 enabled = false;
@@ -284,6 +296,7 @@ public class Group : MonoBehaviour {
             Grid.lastGameScore = Grid.gameScore;
             Grid.gameScore = 0;
             System.Array.Clear(Grid.isFilled, 0, Grid.h);
+            stage = 0;
             SceneManager.LoadScene(2);
             Destroy(gameObject);
         }

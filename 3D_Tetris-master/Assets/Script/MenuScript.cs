@@ -81,6 +81,8 @@ public class MenuScript : MonoBehaviour {
     public void startLevel()
     {
         Debug.Log("PRESSED");
+        Group.stage = 1;
+        Group.numberOfBlocksLeft = 1;
         SceneManager.LoadScene(1);
     }
 
