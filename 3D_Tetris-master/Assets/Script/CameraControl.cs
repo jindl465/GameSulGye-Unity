@@ -8,51 +8,30 @@ public class CameraControl : MonoBehaviour
     public float orthoZoomSpeed = 0.5f;        // The rate of change of the orthographic size in orthographic mode.
     public static Vector3 originPosition;
     public static Quaternion originQuaternion;
-
+    public Camera[] cameras;
+    private int currrentCameraIndex;
     void Start()
     {
+        currrentCameraIndex = 0;
+        cameras[1].gameObject.SetActive(false);
         originPosition = transform.position;
         originQuaternion = transform.rotation;
-        //transform.Rotate(-30, 0, -90);
-        //transform.position += new Vector3(0, -10, 0);
     }
     void Update()
     {
-        // If there are two touches on the device...
-        if (Input.touchCount == 2)
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            // Store both touches.
-            Touch touchZero = Input.GetTouch(0);
-            Touch touchOne = Input.GetTouch(1);
-
-            // Find the position in the previous frame of each touch.
-            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-            // Find the magnitude of the vector (the distance) between the touches in each frame.
-            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
-
-            // Find the difference in the distances between each frame.
-            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
-
-            // If the camera is orthographic...
-            if (this.GetComponent<Camera>().orthographic)
+            cameras[currrentCameraIndex].gameObject.SetActive(false);
+            if (currrentCameraIndex + 1 == cameras.Length)
             {
-                // ... change the orthographic size based on the change in distance between the touches.
-                this.GetComponent<Camera>().orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
-
-                // Make sure the orthographic size never drops below zero.
-                this.GetComponent<Camera>().orthographicSize = Mathf.Max(this.GetComponent<Camera>().orthographicSize, 0.1f);
+                currrentCameraIndex = 0;
             }
             else
             {
-                // Otherwise change the field of view based on the change in distance between the touches.
-                this.GetComponent<Camera>().fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
-
-                // Clamp the field of view to make sure it's between 0 and 180.
-                this.GetComponent<Camera>().fieldOfView = Mathf.Clamp(this.GetComponent<Camera>().fieldOfView, 30.1f, 89.9f);
+                currrentCameraIndex++;
             }
+            cameras[currrentCameraIndex].gameObject.SetActive(true);
         }
     }
 }
+

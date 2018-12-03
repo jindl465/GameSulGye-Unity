@@ -83,12 +83,6 @@ public class GamePlayButton : MonoBehaviour
                 musicButton = play;
             }
         }
-        //Back to origin
-        if (GUI.Button(new Rect((Screen.width * 0.02f), (Screen.height * 0.90f), 70, 60), origin, skin.button)) 
-        {
-            mainCamera.transform.position = CameraControl.originPosition;
-            mainCamera.transform.rotation = CameraControl.originQuaternion;
-        }
 
         //Game Score display
         GUI.Box(new Rect(100, (Screen.height * 0.02f), 100, 100), "Total Score: \n" + Grid.gameScore.ToString(),skin.box);
