@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Group : MonoBehaviour {
 
     public static int gameDifficulty = 1;
+    public int flag_F = 0;
     // Time since last gravity tick
     float lastFall = 0;
     int fallSpeed = 1; 
@@ -61,65 +62,105 @@ public class Group : MonoBehaviour {
         dir.y = -Input.acceleration.y;
         dir.z = Input.acceleration.z;
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (flag_F == 1)
+                flag_F = 0;
+            else
+                flag_F = 1;
+        }
+
         //Move left
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (GamePlayButton.isPaused == true) return;
             //Modify position
-            transform.position += new Vector3(-1, 0, 0);
+            if (flag_F == 0)
+                transform.position += new Vector3(-1, 0, 0);
+            else
+                transform.position += new Vector3(1, 0, 0);
             //Check the validity
             if (isValidGridPos())
             {
                 updateGrid();
             }
             else
+            {
                 //If not valid, reverse the process.
-                transform.position += new Vector3(1, 0, 0);
+                if (flag_F == 0)
+                    transform.position += new Vector3(1, 0, 0);
+                else
+                    transform.position += new Vector3(-1, 0, 0);
+            }
         }
         //Move right
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (GamePlayButton.isPaused == true) return;
-            //Modify position
-            transform.position += new Vector3(1, 0, 0);
-            //Check the validity
-            if (isValidGridPos())
-            {
-                updateGrid();
-            }
-            else
-                //If not valid, reverse the process.
-                transform.position += new Vector3(-1, 0, 0);
-        }
-        //Move forward
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (GamePlayButton.isPaused == true) return;
             //Modify position
-            transform.position += new Vector3(0, 0, 1);
+            if (flag_F == 0)
+                transform.position += new Vector3(1, 0, 0);
+            else
+                transform.position += new Vector3(-1, 0, 0);
             //Check the validity
             if (isValidGridPos())
             {
                 updateGrid();
             }
             else
+            {
                 //If not valid, reverse the process.
-                transform.position += new Vector3(0, 0, -1);
+                if (flag_F == 0)
+                    transform.position += new Vector3(-1, 0, 0);
+                else
+                    transform.position += new Vector3(1, 0, 0);
+            }
         }
-        //Move backward
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        //Move forward
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if (GamePlayButton.isPaused == true) return;
             //Modify position
-            transform.position += new Vector3(0, 0, -1);
+            if (flag_F == 0)
+                transform.position += new Vector3(0, 0, 1);
+            else
+                transform.position += new Vector3(0, 0, -1);
             //Check the validity
             if (isValidGridPos())
             {
                 updateGrid();
             }
             else
+            {
                 //If not valid, reverse the process.
+                if (flag_F == 0)
+                    transform.position += new Vector3(0, 0, -1);
+                else
+                    transform.position += new Vector3(0, 0, 1);
+            }
+        }
+        //Move backward
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (GamePlayButton.isPaused == true) return;
+            //Modify position
+            if (flag_F == 0)
+                transform.position += new Vector3(0, 0, -1);
+            else
                 transform.position += new Vector3(0, 0, 1);
+            //Check the validity
+            if (isValidGridPos())
+            {
+                updateGrid();
+            }
+            else
+            {
+                //If not valid, reverse the process.
+                if (flag_F == 0)
+                    transform.position += new Vector3(0, 0, 1);
+                else
+                    transform.position += new Vector3(0, 0, -1);
+            }
         }
         //Rotate
         //Z Axis
