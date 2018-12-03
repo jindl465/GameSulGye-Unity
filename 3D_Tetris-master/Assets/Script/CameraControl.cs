@@ -19,7 +19,7 @@ public class CameraControl : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             cameras[currrentCameraIndex].gameObject.SetActive(false);
             if (currrentCameraIndex + 1 == cameras.Length)
