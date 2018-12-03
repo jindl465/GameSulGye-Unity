@@ -64,10 +64,13 @@ public class Group : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.F))
         {
+            /*
             if (flag_F == 1)
                 flag_F = 0;
             else
                 flag_F = 1;
+                */
+
         }
 
         //Move left
