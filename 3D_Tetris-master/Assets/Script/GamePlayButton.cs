@@ -52,7 +52,7 @@ public class GamePlayButton : MonoBehaviour
         if (GUI.Button(new Rect((Screen.width - 190), (Screen.height * 0.02f), 70, 60), "Restart", skin.button)) 
         {
             Grid.gameScore = 0;
-            Group.numberOfBlocksLeft = Group.stage;
+            Group.numberOfBlocksLeft = Group.GetNumberOfBlocksForStage(Group.stage);
             isPaused = false;
             Time.timeScale = 1;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

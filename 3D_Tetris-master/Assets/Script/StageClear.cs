@@ -18,7 +18,7 @@ public class StageClear : MonoBehaviour {
     {
         Grid.gameScore = 0;
         Group.stage++;
-        Group.numberOfBlocksLeft = Group.stage;
+        Group.numberOfBlocksLeft = Group.GetNumberOfBlocksForStage(Group.stage);
         SceneManager.LoadScene(1);
     }
 
