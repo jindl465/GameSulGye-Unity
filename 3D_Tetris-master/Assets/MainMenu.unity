@@ -518,7 +518,7 @@ MonoBehaviour:
     of the stage.\r\nIf it satisfies the condition, it goes to the next stage.\n\n\u2605
     Keyboard: \nArrows to control the direction\n<color=red>Space</color> to accelerate
     the falling speed\n<color=red>A</color> is for x-axis rotation\n<color=red>S</color>
-    is for y-axis rotation\n<color=red>D</color> is for z-axis rotation\n<color=red>C</color>
+    is for y-axis rotation\n<color=red>D</color> is for z-axis rotation\n<color=red>F</color>
     is for rotate window\n\n"
 --- !u!222 &150256006
 CanvasRenderer:
