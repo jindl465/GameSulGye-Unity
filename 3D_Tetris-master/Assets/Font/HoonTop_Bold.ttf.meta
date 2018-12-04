@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: ad6394c93276c06448c17a778d7cf091
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: 1HoonTop
+  fontNames:
+  - 1HoonTop
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7c9a1b6580165fd489b5045c4537592a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
