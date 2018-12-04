@@ -296,7 +296,7 @@ public class Group : MonoBehaviour {
             Grid.lastGameScore = Grid.gameScore;
             Grid.gameScore = 0;
             System.Array.Clear(Grid.isFilled, 0, Grid.h);
-            stage = 0;
+            stage = 1;
             SceneManager.LoadScene(2);
             Destroy(gameObject);
         }
