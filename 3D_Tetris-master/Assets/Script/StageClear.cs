@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +16,6 @@ public class StageClear : MonoBehaviour {
 
     public void OnNextButtonClick()
     {
-        Grid.gameScore = 0;
         Group.stage++;
         Group.numberOfBlocksLeft = Group.GetNumberOfBlocksForStage(Group.stage);
         SceneManager.LoadScene(1);
