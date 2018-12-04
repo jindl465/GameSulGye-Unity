@@ -301,4 +301,9 @@ public class Group : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    public static int GetNumberOfBlocksForStage(int stage)
+    {
+        return stage * 2 + 8;
+    }
 }
