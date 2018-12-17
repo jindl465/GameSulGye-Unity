@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Manages default game environment
+
 public class Grid : MonoBehaviour {
 
     //Store game score
@@ -45,14 +47,15 @@ public class Grid : MonoBehaviour {
         return true;
     }
 
-    //deleteFullRow function is the function that delete the full plane and drop the planes,
-    //which are above the deleted plane.
+    //checkFullPlane function is the function that check the full plane and gives bonus score
     public static void checkFullPlane()
     {
         for (int y = 0; y < h; ++y)
         {
             if (isPlaneFull(y) && !isFilled[y])
             {
+                //if plane is full, then increase gameScore by 5000
+                //and mark that plane as filled
                 gameScore += 5000;
                 isFilled[y] = true;
             }

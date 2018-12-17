@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+// Actions in main menu
+
 public class MenuScript : MonoBehaviour {
 
     public Canvas QuitMenu;
@@ -30,6 +32,7 @@ public class MenuScript : MonoBehaviour {
         MenuMute = MenuMute.GetComponent<Toggle>();
         GameMute = GameMute.GetComponent<Toggle>();
 
+        //Initialize popup menus
         QuitMenu.enabled = false;
         GuideMenu.enabled = false;
         SettingMenu.enabled = false;
@@ -41,6 +44,7 @@ public class MenuScript : MonoBehaviour {
 
     void Update()
     {
+        //Set game music state
         if (GamePlayButton.musicMute)
         {
             GameMute.isOn = false;
@@ -51,8 +55,10 @@ public class MenuScript : MonoBehaviour {
         }
     }
 	
+    //Exit pressed in main menu
     public void ExitPressed()
     {
+        //Shows quit menu
         QuitMenu.enabled = true;
         GuideMenu.enabled = false;
         StartButton.enabled = false;
@@ -62,8 +68,10 @@ public class MenuScript : MonoBehaviour {
         SettingButton.enabled = false;
     }
 
+    //No pressed in quit menu
     public void NoPressed()
     {
+        //Restore to main menu
         QuitMenu.enabled = false;
         GuideMenu.enabled = false;
         SettingMenu.enabled = false;
@@ -73,21 +81,27 @@ public class MenuScript : MonoBehaviour {
         SettingButton.enabled = true;
     }
 
+    //Yes pressed in quit menu
     public void YesPressed()
     {
+        //Quit the game
         Application.Quit();
     }
 
+    //Play button pressed in main menu
     public void startLevel()
     {
+        //Start the game
         Debug.Log("PRESSED");
         Group.stage = 1;
         Group.numberOfBlocksLeft = Group.GetNumberOfBlocksForStage(Group.stage);
         SceneManager.LoadScene(1);
     }
 
+    //How to play button pressed in main menu
     public void GuidePressed()
     {
+        //Shows guide menu
         GuideMenu.enabled = true;
         QuitMenu.enabled = false;
         SettingMenu.enabled = false;
@@ -97,8 +111,10 @@ public class MenuScript : MonoBehaviour {
         SettingButton.enabled = false;
     }
 
+    //Back button pressed in guide menu
     public void BackPressed()
     {
+        //Restore to main menu
         GuideMenu.enabled = false;
         QuitMenu.enabled = false;
         SettingMenu.enabled = false;
@@ -108,8 +124,10 @@ public class MenuScript : MonoBehaviour {
         SettingButton.enabled = true;
     }
 
+    //Setting button pressed in main menu
     public void SettingPressed()
     {
+        //Show setting menu
         SettingMenu.enabled = true;
         GuideMenu.enabled = false;
         QuitMenu.enabled = false;
@@ -119,8 +137,10 @@ public class MenuScript : MonoBehaviour {
         SettingButton.enabled = false;
     }
 
+    //Back button pressed in setting menu
     public void S_backPressed()
     {
+        //Restore to main menu
         GuideMenu.enabled = false;
         QuitMenu.enabled = false;
         SettingMenu.enabled = false;
@@ -130,6 +150,7 @@ public class MenuScript : MonoBehaviour {
         SettingButton.enabled = true;
     }
 
+    //Toggle menu music state
     public void MenuToggle()
     {
         if(MenuMute.isOn == true)
@@ -143,6 +164,7 @@ public class MenuScript : MonoBehaviour {
         }
     }
 
+    //Toggle game music state
     public void GameToggle()
     {
         if(GameMute.isOn == true)
@@ -157,6 +179,7 @@ public class MenuScript : MonoBehaviour {
 
     }
 
+    //Change difficulty of the game
     public void ChangeDifficulty()
     {
         Group.gameDifficulty = (int)Difficulty.value;

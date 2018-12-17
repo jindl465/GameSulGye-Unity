@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+// Spawns new block in the game
+
 public class Spawner : MonoBehaviour
 {
     // Groups

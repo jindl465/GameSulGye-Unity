@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+// Manages blocks and detects collisions
+
 public class Group : MonoBehaviour {
 
     public static int gameDifficulty = 1;
@@ -302,6 +304,7 @@ public class Group : MonoBehaviour {
         }
     }
 
+    // Get number of blocks in specified stage
     public static int GetNumberOfBlocksForStage(int stage)
     {
         return stage * 2 + 8;
